@@ -1,5 +1,4 @@
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -17,7 +16,7 @@ import javafx.util.Duration;
 public class BouncingSphere extends Application
 {
     @Override
-    public void start(Stage stage) throws Exception
+    public void start(Stage stage)
     {
         Pane canvas = new Pane();
         Scene scene = new Scene(canvas, 600, 600);
@@ -36,7 +35,7 @@ public class BouncingSphere extends Application
         stage.show();
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10),
-                new EventHandler<ActionEvent>()
+                new EventHandler<>()
                 {
                     double dx = 7; //Sets step on x (or velocity).
                     double dy = 3; //Sets step on y.
@@ -50,7 +49,7 @@ public class BouncingSphere extends Application
 
                         Bounds bounds = canvas.getBoundsInLocal();
 
-                        if(sphere.getLayoutX() <= (bounds.getMinX() + sphere.getRadius()) ||
+                        if (sphere.getLayoutX() <= (bounds.getMinX() + sphere.getRadius()) ||
                                 sphere.getLayoutX() >= (bounds.getMaxX() - sphere.getRadius()))
                         {
                             dx = -dx;
